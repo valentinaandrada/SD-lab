@@ -1,0 +1,104 @@
+<div class="form-container">
+  <h1>New Member</h1>
+  <form [formGroup]="memberForm">
+    <div>
+      <!-- Member ID Field -->
+      <mat-form-field color="outline" class="input" disabled>
+        <mat-label>Member ID</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="memberID" readonly
+        /> </mat-form-field
+      ><br />
+
+      <!-- Name Field -->
+      <mat-form-field color="primary" class="input">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+        <mat-error *ngIf="memberForm.controls['name'].hasError('minlength')"
+          >Name should be at least 3 characters</mat-error
+        >
+        <mat-error *ngIf="memberForm.controls['name'].hasError('required')"
+          >This field is required</mat-error
+        > </mat-form-field
+      ><br />
+
+      <!-- Surname Field -->
+      <mat-form-field color="primary" class="input">
+        <mat-label>Surname</mat-label>
+        <input matInput type="text" formControlName="surname" />
+        <mat-error *ngIf="memberForm.controls['surname'].hasError('minlength')"
+          >Surname should be at least 3 characters.</mat-error
+        >
+        <mat-error *ngIf="memberForm.controls['surname'].hasError('required')"
+          >Surname is required</mat-error
+        > </mat-form-field
+      ><br />
+
+      <!-- DNI Field -->
+      <mat-form-field color="primary" class="input">
+        <mat-label>DNI</mat-label>
+        <input matInput type="text" formControlName="dni" />
+        <mat-error
+          *ngIf="
+            memberForm.controls['dni'].hasError('minlength') ||
+            memberForm.controls['dni'].hasError('maxlength')
+          "
+          >DNI must have 9 characters</mat-error
+        >
+        <mat-error *ngIf="memberForm.controls['dni'].hasError('required')"
+          >This field is required</mat-error
+        > </mat-form-field
+      ><br />
+
+      <!-- Phone Field -->
+      <mat-form-field color="primary" class="input">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text" formControlName="phone" />
+        <mat-error
+          *ngIf="
+            memberForm.controls['phone'].hasError('pattern')
+          "
+          >Please provide a valid phone number</mat-error
+        >
+        <mat-error *ngIf="memberForm.controls['phone'].hasError('required')"
+          >This field is required</mat-error
+        > </mat-form-field
+      ><br />
+
+      <!-- Gender Field -->
+      <mat-form-field color="primary" class="input">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <ng-container *ngFor="let gender of gender">
+            <mat-option value="{{ gender.value }}">{{
+              gender.value
+            }}</mat-option>
+          </ng-container>
+        </mat-select>
+        <mat-error *ngIf="memberForm.controls['gender'].hasError('required')"
+          >This field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="memberForm.invalid"
+      (click)="addMember()"
+      class="form-btn"
+    >
+      {{ actionBtn }}
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="closeDialog()"
+      class="form-btn"
+    >
+      Cancel
+    </button>
+  </form>
+</div>

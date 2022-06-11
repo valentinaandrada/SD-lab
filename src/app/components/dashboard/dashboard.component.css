@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 80%;
+  margin: auto;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-transform: capitalize;
+}
+
+th:not(:last-of-type) {
+  width: 15%;
+}
+
+.btn {
+  align-self: flex-end;
+  width: 8rem;
+  margin-top: 1rem;
+}
+

@@ -1,0 +1,18 @@
+.navbar {
+  padding: 0 10%;
+}
+
+.navbar-title {
+  padding-left: 1rem;
+  color: #673ab7;
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.navbar-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
